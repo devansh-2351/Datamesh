@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package datamesh;
+
+option go_package = "github.com/datamesh-labs/datamesh/proto;datameshpb";
+
+// Block message
+message Block {
+  string id = 1;
+  repeated Transaction transactions = 2;
+  int64 height = 3;
+  int64 timestamp = 4;
+}
+
+// Transaction message
+message Transaction {
+  string id = 1;
+  bytes data = 2;
+}
+
+// Blob message (for DA)
+message Blob {
+  string id = 1;
+  bytes data = 2;
+  string commitment = 3;
+}
+
+// Validator management
+message Validator {
+  string id = 1;
+  string pubkey = 2;
+}
+
+message AddValidatorRequest {
+  Validator validator = 1;
+}
+message AddValidatorResponse {
+  bool success = 1;
+}
+
+message RemoveValidatorRequest {
+  string id = 1;
+}
+message RemoveValidatorResponse {
+  bool success = 1;
+}
+
+message ListValidatorsRequest {}
+message ListValidatorsResponse {
+  repeated Validator validators = 1;
+}
+
+// Consensus service
+service ConsensusService {
+  rpc GetStatus (StatusRequest) returns (StatusResponse);
+  rpc AddValidator (AddValidatorRequest) returns (AddValidatorResponse);
+  rpc RemoveValidator (RemoveValidatorRequest) returns (RemoveValidatorResponse);
+  rpc ListValidators (ListValidatorsRequest) returns (ListValidatorsResponse);
+}
+
+message StatusRequest {}
+message StatusResponse {
+  string status = 1;
+}
+
+// Data Availability service
+service DAService {
+  rpc PostBlob (PostBlobRequest) returns (PostBlobResponse);
+  rpc SampleBlob (SampleBlobRequest) returns (SampleBlobResponse);
+}
+
+message PostBlobRequest {
+  bytes data = 1;
+}
+message PostBlobResponse {
+  string id = 1;
+}
+message SampleBlobRequest {
+  string id = 1;
+}
+message SampleBlobResponse {
+  bytes data = 1;
+}
+
+// Execution service
+service ExecutionService {
+  rpc ExecuteTx (ExecuteTxRequest) returns (ExecuteTxResponse);
+}
+
+message ExecuteTxRequest {
+  bytes tx = 1;
+}
+message ExecuteTxResponse {
+  bytes result = 1;
+} 
