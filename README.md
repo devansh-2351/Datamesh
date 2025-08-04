@@ -3,7 +3,8 @@
 ## 🌐 Overview
 DataMesh is a modular Layer 1 blockchain that decouples the core components of blockchain architecture:
 
-![Uploading image.png…]()
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/ef5c91c2-7f3e-4f34-afdd-3c6fbc94e384" />
+
 
 - **Consensus**
 - **Execution**
