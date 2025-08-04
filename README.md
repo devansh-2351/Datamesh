@@ -2,6 +2,9 @@
 
 ## 🌐 Overview
 DataMesh is a modular Layer 1 blockchain that decouples the core components of blockchain architecture:
+
+![Uploading image.png…]()
+
 - **Consensus**
 - **Execution**
 - **Data Availability (DA)**
