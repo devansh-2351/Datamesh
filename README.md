@@ -147,5 +147,3 @@ If you want to add tests, integrate with Tendermint, or need help with a specifi
   ```
 
 ---
-
-**Next, I’ll upgrade the Data Availability module to store blobs in memory and return real data on sampling. Would you like to proceed with this, or focus on another module?** 
